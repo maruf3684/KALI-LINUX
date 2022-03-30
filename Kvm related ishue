@@ -1,0 +1,19 @@
+install kvm
+egrep -c '(vmx|svm)' /proc/cpuinfo
+kvm-ok
+sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils
+sudo adduser username libvirt
+sudo adduser username kvm
+sudo apt install virt-manager
+
+
+check if it using kvm
+sudo lsof -n | grep /dev/kvm
+
+
+NB:bridge utility from old kali repo neta hobe
+sudo nano /etc/apt/sources.list   
+tarpor
+#old kali 
+#deb http://old.kali.org/kali sana main non-free contrib
+#deb-src http://old.kali.org/kali sana main non-free contrib
