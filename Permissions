@@ -1,3 +1,3 @@
-1.Give permission to normal user read and write in driver
+1.Give permission to normal user read and write in drive
 sudo chown -v $USER:$USER /mnt/f99b8177-60a3-4fac-834e-ad4724702c57/
 2.
