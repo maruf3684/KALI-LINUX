@@ -1,0 +1,51 @@
+
+Step 1: Update Software Packages
+---------------------
+sudo apt update
+sudo apt upgrade
+
+Step 2: Install MySQL Server
+---------------------
+sudo apt install mysql-server
+
+Step 3: Verify MySQL Service Status
+---------------------
+sudo systemctl status mysql
+mysql --version
+
+Step 4: Enable MySQL Service on Startup
+---------------------
+sudo systemctl enable mysql
+
+Step 5: Securing MySQL
+---------------------
+sudo mysql_secure_installation
+
+Step 6: Log in to MySQL Server
+---------------------
+sudo mysql
+OR
+sudo mysql -u root
+
+Step 7: Set MySQL Root Password
+---------------------
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password_here';
+FLUSH PRIVILEGES;
+exit;
+sudo systemctl restart mysql
+sudo mysql -u root -p
+
+Step 8: Create MySQL Database
+---------------------
+SHOW DATABASES;
+CREATE DATABASE mydb;
+sudo mysql -u root -p
+
+Useful MySQL Commands
+---------------------
+sudo systemctl stop mysql    #stop mysql
+sudo systemctl start mysql    #start mysql
+sudo systemctl restart mysql   #restart mysql
+sudo systemctl disable mysql   #disable mysql
+sudo systemctl enable mysql    #enable mysql
