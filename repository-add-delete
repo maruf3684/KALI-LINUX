@@ -1,0 +1,6 @@
+
+1.GET ALL ADDED REPO
+ls -l /etc/apt/sources.list.d/
+
+2.delete specipic repo
+sudo rm /etc/apt/sources.list.d/<Repo_Filename>.list
