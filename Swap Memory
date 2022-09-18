@@ -1,0 +1,2 @@
+off: swapoff -a 
+view and start : free -h
