@@ -1,2 +1,6 @@
 off: swapoff -a 
 view and start : free -h
+
+Check space: # free -m 
+Disable swap: # swapoff -a 
+Enable swap: # swapon -a 
