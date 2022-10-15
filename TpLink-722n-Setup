@@ -1,0 +1,27 @@
+1.Connect Broadband connection
+lsusb
+sudo apt update && sudo apt upgrade
+sudo reboot
+sudo apt install linux-headers-$(uname -r)
+sudo apt install bc
+git clone https://github.com/aircrack-ng/rtl8188eus
+cd rtl8188eus
+sudo -i
+echo "blacklist r8188eu" > "/etc/modprobe.d/realtek.conf"
+exit
+reboot
+cd rtl8188eus
+make
+sudo make install
+sudo modprobe 8188eu
+.....................................
+...................................
+sudo ifconfig wlan0 down
+sudo airmon-ng check kill
+sudo iwconfig wlan0 mode monitor --- managed
+sudo ifconfig wlan0 up
+sudo iwconfig
+systemctl restart NetworkManager     
+
+
+link:https://www.youtube.com/watch?v=EpXkkQPuLb4
