@@ -1,0 +1,5 @@
+sudo vim /usr/share/pulseaudio/alsa-mixer/paths/analog-output-headphones.conf
+;on some mechines front is actually a part of...........
+[Element Front]
+switch = off
+volume = off
