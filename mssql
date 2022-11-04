@@ -1,5 +1,6 @@
 server:localhost
 port:1433
 username:sa
+current passs: maruf15-1927@
 set username pass:sqlcmd -S localhost -U sa -P '<YourPassword>'
 status check:systemctl status mssql-server
