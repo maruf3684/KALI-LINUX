@@ -1,0 +1,13 @@
+host:127.0.0.1
+port:6379
+>For connect with redisinsight client no pass and user need. just use manual connection and (( #protected-mode yes ))should be commented in config file.
+
+
+>open redis configuration file
+sudo nano /etc/redis/redis.conf 
+
+>can set password by unset comment hash in that line in config file # requirepass foobared
+
+>after edit systemctl restart redis-server must
+
+
