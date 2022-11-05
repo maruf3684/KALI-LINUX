@@ -1,9 +1,15 @@
 >Server Check:systemctl status postgresql
 >Run on startup:systemctl enable postgresql
 
->Entering Cli: sudo su postgres
+..............important.........................
+>Entering Cli with peer: sudo su postgres
                psql
->change password for user: alter user postgres with password 'maruf15-1927@'
+               
+>Entering Cli with TCP:  psql -U postgres -h localhost
+
+>change password for user: ALTER USER postgres WITH PASSWORD 'maruf15-1927@';
+
+.................important end....................................
                
 >Host: localhost
  Port: 5432
