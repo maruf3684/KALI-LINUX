@@ -1,0 +1,6 @@
+$ grep CODENAME /etc/os-release
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+
+$ lsb_release -c
+Codename:   focal
