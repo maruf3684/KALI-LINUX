@@ -9,6 +9,9 @@
 
 >change password for user: ALTER USER postgres WITH PASSWORD 'maruf15-1927@';
 
+now::::: usrname: postgres
+         pass: maruf15-1927@
+
 .................important end....................................
                
 >Host: localhost
