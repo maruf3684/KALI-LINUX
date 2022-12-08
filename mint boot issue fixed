@@ -1,0 +1,3 @@
+exit
+fsck /dev/sda5 -y
+reboot
