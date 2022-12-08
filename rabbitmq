@@ -1,0 +1,14 @@
+After Install:
+systemctl start rabbitmq-server
+systemctl enable rabbitmq-server
+rabbitmq-plugins list
+rabbitmq-plugins enable rabbitmq_management
+
+ADDING USER AND GIVING PERMISSIONS:
+rabbitmqctl add_user munna 1234
+rabbitmqctl set_user_tags munna administrator
+rabbitmqctl set_permissions -p / munna ".*" ".*" ".*"
+
+
+Agent Address:
+http://localhost:15672/#/
