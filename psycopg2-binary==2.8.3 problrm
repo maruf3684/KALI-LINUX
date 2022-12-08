@@ -1,0 +1,5 @@
+
+work:
+sudo apt-get install libpq5=12.12-0ubuntu0.20.04.1
+sudo apt-get install libpq-dev
+sudo apt-get install gcc libpq-dev python3-dev
