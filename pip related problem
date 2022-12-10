@@ -1,0 +1,15 @@
+sudo rm /var/lib/apt/lists/* -vf
+sudo apt-get update
+
+...........................
+
+sudo apt-get install python3-pip
+
+# ✅ install specific version of pip
+pip install --upgrade pip==8.1.2
+
+# ✅ install specific version of a package using pip
+pip install requests==2.28.0 --ignore-installed
+
+# ✅ upgrade pip to latest version
+pip install --upgrade pip
