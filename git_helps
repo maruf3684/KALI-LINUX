@@ -1,0 +1,22 @@
+
+config user global.
+  git config --global user.email "maruf3684@gmail.com"
+  git config --global user.name "maruf3684"
+
+
+
+1.See all branch: git branch -a
+2.Create Branch : git checkout -b site-status
+3.Push code in branch : git push -u origin site-status
+4.See current branch : git branch --show-current
+5.Adding code to branch git add .
+6.commit: git commit -m "all site ordering"
+7.Switch Branch: git checkout main 
+
+8. add remote origin : git remote add origin https://github.com/maruf3684/News_App_Native_Android.git
+
+
+
+9. add remote origin with key: git remote add origin https://maruf3684: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@github.com/maruf3684/SyncCode-Express-React-Socket.io-.git
+
+10. remove remote origin: git remote remove origin
