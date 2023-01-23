@@ -1,22 +1,119 @@
+1.For declare a folder as git repository:
+  git init
 
-config user global.
-  git config --global user.email "maruf3684@gmail.com"
-  git config --global user.name "maruf3684"
+2.config user global.
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+3.See all branch: 
+  git branch -a
+
+3.1.Rename a branch:
+   git branch -M BranchName [Jei branch a achi oitar name change hoye jabe]
+
+4.Create Branch from another branch: (new branch a existing code+commit sob niye chole jabe)
+   git checkout -b BranchName
+
+5.Go to existing another branch [non existing branch a jaite pare na]:
+  git checkout BranchName
+
+6.Push code in branch: 
+  git push -u origin BranchName
+
+7.See current branch : 
+  git branch --show-current
+
+8.Adding code to branch [Stage e Uthano]
+  git add .
+
+9.Unstage changes [after run this git add . command if you want to unstaged all change]
+  git restore --staged .
+
+10.commit/save: 
+  git commit -m "Write Your Commit Message"
+
+11.Delete A Branch:
+   First go in another branch then 
+   git branch --delete BranchName
+
+12.Undo Local Changes
+   git reset (command should be run in root directory | it will unstaged all changed)
+   git checkout . (this will revert all uncomitted change)
+   git checkout [some_dir|file.txt] (this will revert all uncomitted change in specific file or directory)
+
+13.See all commit with commit id:
+   git log
+
+    
+14.Revert back to specific commit:
+   git reset --hard [previous commit sha id here]
+   git push origin BranchName -f 
+   -------------
+   git reset --soft [previous commit sha id here] (jodi file er change muche falte na chaw)
+
+15.Push changes under previous commit [commit kore falechi but abar file update hoise tahole ager commit er under a ai change gula push kore deta use korbo]
+   git commit --amend --no-edit (git add . kore niyo new changes ar pore)
+
+16.Undo most previous Commit
+   git reset --soft HEAD~1
+   
+17.Add remote repo:
+   git remote add origin git@github.com:maruf3684/git-experiment.git
+   add remote origin with key: git remote add origin https://maruf3684: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@github.com/maruf3684/SyncCode-Express-React-Socket.io-.git
+
+18.Delete remote repo:
+   git remote remove origin
+
+19.Make a Empty Branch: (branch a kono commit thakbe na just local file+code thakbe//commit na kore git push korle 0 commit e origin a push kora jai na)
+   git checkout --orphan empty-branch
+   git rm --cached -r .
+
+20.Bring all latest changes by other developer from remote repo:
+   git pull
+   NB: suppose same file e ami akta change korechi+commit korechi locally [all commit=2] //and remote developer o akta change koreche+commit koreche
+   [all commit=2] thole ami pull dela conflict dakhabe / tokhon amake incomming or current change 2 tar akta or both accept kore locally akta 3rd commit
+   kore then upload deta hobe.
+
+21.Merge Brance3[currently have 2 commit] with Branch2[currently have 2 commit]
+   >go to branch2
+   >>git merge Branch3
+   >jodi conflict hoi [we can accept current/incomming/or both change]
+   >Er pore amader new commit korte hobe but git add . korar dorkar nai ota kora e thakbe
+   >Commit korar pore Branch2 te mot commit sonkha hobe 4 ti. Last theke gunchi niche
+    4.merge korar porer commit ta + 3.Branch2 te age 2 ta commit chilo oitar 2nd ta + 2.Branch3 te age 2 ta commit chilo oitar 2nd ta.
+    1.Branch2 & Branch3 [both a]  age 2 ta commit chilo oi 2 ta commit er 1st er ta. [1st Commit ta Branch2 and Branch3 te same karon oita 
+    master theke naoua] //tahome ai mot 4 ta commit hobe.
+   >NB: Conflict na hole merge korar pore new commit er dorkar nai (mane 4 no commit jake bole marge-commit, oita hobe na/lagbe na).
+   >NB:Merge er pore command line ashle jodi bole "Please enter a commit message why merge is necessery"
+     ->1.keyboard a i chapbo.
+     ->2.Ja commit likhar likhbo.
+     ->3.Likha sesh a ESC button chapbo.
+     ->4.tarpor :wq! chapbo save deta hole.
+   >NB: Dhori (b1=jar sathe merge korlam[mane ami b1 e achi],b2=jei branch ke tane ane merge koralam) Khayal korle dakhbe b1 er commit gulor upore b2 er 
+        commit gula ashe boseche. Rebase korle b1 er change gula ulta giye b2 er upore giye bosto. (kolpona koro b2 mane master/tahole master er mathar 
+        upore giye sub branch er change gula boshle valo hoi)
+
+22.Rebase Command (suppose you are in b1 and want to rebase with master)
+   >git rebase master (b1 er commit er dhara/line hobe --b1 er commit gula master er mathar upre giye bosbe 
+   [b1 commits=master commits{console e nicher dike} + tar upore b1 er commits{console e uporer dike}].)
+   >merge conflict resolve koro
+   >git add .
+   >git rebase --continue
+   >NB: git merge er moto last er extra merge-commit lagbe na conflict thakle o.
+   
+   >Tutorial video link for help: https://youtu.be/KWAZl2QHC44
+   
+                        
+23.See remote origind
+   >git remote -v
+
+24.Delete a remote Branch
+   > git push origin -d BranchName
+
+25.How to make your local specific branch is like remote specific one
+   >git fetch origin
+   >git reset --hard origin/master [aikhane local ke remote er jar moto korte chaw sei branch er name daw]
+   >git clean -f -d
 
 
 
-1.See all branch: git branch -a
-2.Create Branch : git checkout -b site-status
-3.Push code in branch : git push -u origin site-status
-4.See current branch : git branch --show-current
-5.Adding code to branch git add .
-6.commit: git commit -m "all site ordering"
-7.Switch Branch: git checkout main 
-
-8. add remote origin : git remote add origin https://github.com/maruf3684/News_App_Native_Android.git
-
-
-
-9. add remote origin with key: git remote add origin https://maruf3684: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@github.com/maruf3684/SyncCode-Express-React-Socket.io-.git
-
-10. remove remote origin: git remote remove origin
