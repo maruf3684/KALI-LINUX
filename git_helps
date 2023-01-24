@@ -22,6 +22,22 @@
 
 7.See current branch : 
   git branch --show-current
+  
+7.1.Show all branch
+    git branch #To see local branches, run this command
+    git branch -r #To see remote branches, run this command
+    git branch -a #To see all local and remote branches, run this command
+    
+7.2.Show Branch wuth last commit:
+    git branch -v
+    
+7.3.Show all branch that already merged with master
+    >go to master branch
+    >git branch --merged
+    
+7.4.Show all branch that not merged with master (master er sathe akhono merge kora hoi ni amon branch)
+    >go to master branch
+    >git branch --no-merged
 
 8.Adding code to branch [Stage e Uthano]
   git add .
