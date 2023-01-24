@@ -115,5 +115,13 @@
    >git reset --hard origin/master [aikhane local ke remote er jar moto korte chaw sei branch er name daw]
    >git clean -f -d
 
+26.Go in specific commit id:
+   >git checkout <commit-id-sha>
+   >fire jate git checkout Branchname
+
+27. make branch from specificcommit id:
+    git checkout -b <new-branch-name> <commit-id-sha>
+    
+
 
 
