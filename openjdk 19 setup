@@ -6,3 +6,27 @@ dpkg -l | grep openjdk
 
 uninstall them:
 sudo apt-get remove openjdk-11-jre-headless
+
+
+java location in linux:
+Ubuntu, Debian, and other Debian-based distributions: /usr/lib/jvm/
+Red Hat, CentOS, Fedora, and other RPM-based distributions: /usr/java/
+Arch Linux: /usr/lib/jvm/
+
+
+path set korar upai:
+/usr/lib/jvm/jdk-19.0.2/bin
+
+install openjdk file:
+sudo tar -xvf openjdk.tar.gz -C /usr/lib/jvm/
+
+open bash path file:
+nano ~/.bashrc
+paste below line in last line:
+export PATH="/usr/lib/jvm/jdk-19.0.2/bin:$PATH"
+
+linux a ki ki path set ache dakhar upai:
+echo $PATH
+
+Now see java version:
+java -version
