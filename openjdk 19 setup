@@ -1,0 +1,8 @@
+how to open .bashrc file:
+nano ~/.bashrc
+
+show installed jdks:
+dpkg -l | grep openjdk
+
+uninstall them:
+sudo apt-get remove openjdk-11-jre-headless
