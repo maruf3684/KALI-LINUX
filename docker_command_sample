@@ -1,0 +1,248 @@
+1.see available images
+> docker images
+>docker images -a
+
+2.Clear all images
+>docker system prune -a
+or
+>docker rmi $(docker images -aq)
+
+3.deleting a image
+>docker rmi IMAGE ID(feb5d9fea6a5) -f
+
+4.pull an image from docker hub
+>docker pull hello-world
+
+5. Watch running container
+>docker ps (existing and running)
+>docker ps -a (existing and running + existing but not running)
+
+6. Run image as a container 
+> docker run hello-world or feb5d9fea6a5
+
+7. Run a image in interactive mode
+docker run -it ubuntu
+
+8.Run a image as container in background 
+>docker run -t -d ubuntu
+or
+>docker run --name Give_A_Name -t -d ubuntu
+
+9. Access docker container terminal
+>docker exec -it <container id> bash or ash
+
+10. Exit from a docker container terminal
+>exit
+
+10. Stop a container
+>docker stop <container_id_or_name>
+
+11.install bash in alpine os
+apk add --no-cache bash
+
+12.run some command in alpine container terminal (Dockerfile)
+>CMD ["python","manage.py","test"]
+
+13.Build a project with Dockerfile
+docker build -t <give_image_name> /path/to/dockerfile
+or
+docker build -t tallykhata .
+
+14.Interact Alpine terminal after run project
+>CTRL + Z
+
+15. Docker compose Up and Down
+>docker-compose up
+>docker-compose up -d
+>docker-compose down
+
+16. Down and remove all container
+docker stop $(docker ps -q) && docker rm $(docker ps -aq)
+
+17.Delete existing container
+>docker rm container_name_or_id
+>docker rm container1 container2 container3
+>docker rm -f container_name_or_id (force remove a running container)
+>docker container prune (remove all non running stopped container)
+
+18. How to see running container logs
+>docker logs container_name_or_id
+>docker logs -f container_name_or_id (realtime log view)
+
+19. Build with docker compose
+>docker-compose build
+>docker-compose build web (build specific service)
+
+20. see running container with compose
+>docker compose ps
+
+21. Inspect container details
+>docker inspect <container-name>
+
+22. See logs of different service with docker compose
+>docker compose logs web
+
+23. rebuild and run container with docker compose
+>docker-compose up --build
+>docker-compose up --build <service-name>
+
+24. access terminal of container by docker compose
+>docker-compose exec web bash
+
+25. continously see logs by docker compose
+>docker-compose logs --follow web(here web is service name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################################Sample Dockerfile ####################
+FROM python:3.6.15-alpine
+RUN apk update && apk add postgresql-libs build-base libjpeg-turbo-dev zlib-dev python3-dev gcc libc-dev libffi-dev libpq-dev nano
+WORKDIR /app
+RUN mkdir media
+RUN mkdir log
+RUN mkdir config
+RUN mkdir static
+COPY firebase/tallykhata-firebase-adminsdk.json config/tallykhata-firebase-adminsdk.json
+WORKDIR /tallykhata-project
+COPY requirements.txt .
+RUN pip install -U pip
+RUN pip install -r requirements.txt
+COPY . .
+EXPOSE 8000
+COPY tallykhata/.env_docker_v2 tallykhata/.env
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["python", "manage.py", "test"]
+
+
+
+
+###################################Sample docker-compose file ####################
+
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    container_name: postgres-container
+    networks:
+      - djnetwork
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+
+  redis:
+    image: redis:latest
+    networks:
+      - djnetwork
+
+  web:
+    build: .
+    container_name: tallykhata-container
+    #command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - djnetwork
+#    volumes:
+#      - .:/tallykhata-project
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+networks:
+  djnetwork:
+    driver: bridge
+volumes:
+  postgres-data:
