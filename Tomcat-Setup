@@ -1,0 +1,80 @@
+>sudo apt update
+>sudo apt install default-jdk
+
+>sudo mkdir /opt/tomcat
+>wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz.sha512
+>tar -xzf apache-tomcat-9.0.76.tar.gz
+>sudo mv apache-tomcat-9.0.46/* /opt/tomcat/
+
+>sudo nano /opt/tomcat/conf/tomcat-users.xml
+
+>in tomcat-users.xml file uncomment bellow file
+<role rolename="manager-gui"/>
+<user username="manager" password="anyPassword" roles="manager-gui"/>
+<role rolename="admin-gui"/>
+<user username="admin" password="anyPassword" roles="admin-gui, manager-gui"/>
+
+>for run
+cd /opt/tomcat/bin/ && ./startup.sh
+>for stop 
+go to folder ./shutdown.sh
+
+
+
+
+
+
+Now for automatic start stop:
+########################### Need some Modification after #################################
+0. Set up the necessary environment variables by creating a new file named setenv.sh within the Tomcat directory:
+>sudo nano /opt/tomcat/bin/setenv.sh
+or
+>sudo nano setenv.sh
+
+
+0.1 Add the following lines to the file:
+export JAVA_HOME=/usr/lib/jvm/default-java
+export CATALINA_HOME=/opt/tomcat
+
+0.2 Make the Tomcat scripts executable:
+>sudo chmod +x /opt/tomcat/bin/*.sh
+or 
+>sudo chmod +x setenv.sh
+
+
+
+1.Create a new systemd service unit file for Tomcat:
+>sudo nano /etc/systemd/system/tomcat.service
+
+2.Add the following content to the file:
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/lib/jvm/default-java
+Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=root
+Group=root
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+3.start
+sudo systemctl enable tomcat
+sudo systemctl start tomcat
+4.stop
+sudo systemctl stop tomcat
