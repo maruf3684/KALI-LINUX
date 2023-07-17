@@ -1,0 +1,33 @@
+Show logs:
+pmset -g log | grep DarkWake
+see setup:
+pmset -g custom
+
+set to:
+sudo pmset -a tcpkeepalive 0
+sudo pmset -a powernap 0
+sudo pmset -b standby 0
+sudo pmset -a ttyskeepawake 0
+
+
+
+
+
+
+
+
+
+
+MY DEFAULT WAS::::::
+ Sleep On Power Button 1
+ lowpowermode         0
+ standby              0
+ ttyskeepawake        1
+ powernap             1
+ displaysleep         30
+ womp                 0
+ networkoversleep     0
+ sleep                0
+ tcpkeepalive         1
+ autorestart          0
+ disksleep            10
