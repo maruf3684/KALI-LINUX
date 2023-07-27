@@ -22,7 +22,17 @@ now::::: usrname: postgres
 >give master password pgadmin: maruf15-1927@
 
 
+/................................for mac.......................
+brew install postgresql@15
+brew services restart postgresql@15
+brew info postgresql 
 
+nano ~/.zshrc 
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+Username : munna
+
+....................end for mac ............................................
 
 ...............................................................................................................
 >pgadmin 4 install modified:
