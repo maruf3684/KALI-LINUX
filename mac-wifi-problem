@@ -1,0 +1,7 @@
+1. ai 3 ta off korte hobe:  airdrop,airplay-receiver,Handoff
+2. network service theke ethernet,thunderbolt ja ja network interface ache off korte hobe.
+3. airdrop awdl0 use kore aita disable korte hobe
+--> Check korte : sudo ifconfig
+-->Disable: sudo ifconfig awdl0 down
+-->Enable: sudo ifconfig awdl0 up
+
