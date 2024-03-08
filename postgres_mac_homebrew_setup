@@ -22,7 +22,11 @@ CREATE ROLE nobopay WITH LOGIN PASSWORD 'n0b0p@y' CREATEDB;
 
 Active password and remove trust from all user
 ->cd /
-edit in -> nano opt/homebrew/var/postgres@16/pg_hba.conf
+->cd opt
+->cd homebrew
+->cd var
+->cd /postgres@16
+-> nano pg_hba.conf
 
 current: 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
