@@ -7,7 +7,11 @@ After Homebrew Install, Set user to Postgres
 
 login to shell:
 -> psql postgres
-or
+-> \l :show all database
+-> \du :show list of user postgres
+-> \q :exit pg shell
+
+you can login by this when you know default postgres username:
 -> psql -h localhost -p 5432 -U maruf -d postgres
 
 change Password:
@@ -46,6 +50,3 @@ one liner:
 -> PGPASSWORD=maruf15-1927@ psql -h localhost -p 5432 -U maruf -d postgres
 
 
--> \l :show all database
--> \du :show list of user postgres
--> \q :exit pg shell
