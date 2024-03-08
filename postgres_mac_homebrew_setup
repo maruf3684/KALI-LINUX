@@ -1,0 +1,51 @@
+After Homebrew Install, Set user to Postgres
+
+->brew services start postgresql@16
+
+->brew services restart postgresql@16
+
+
+login to shell:
+-> psql postgres
+or
+-> psql -h localhost -p 5432 -U maruf -d postgres
+
+change Password:
+ALTER USER maruf WITH PASSWORD 'maruf15-1927@';
+
+create new user with pass:
+CREATE ROLE nobopay WITH LOGIN PASSWORD 'n0b0p@y' CREATEDB;
+
+Active password and remove trust from all user
+->cd /
+edit in -> nano opt/homebrew/var/postgres@16/pg_hba.conf
+
+current: 
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+local   all             all                                     trust
+host    all             all             127.0.0.1/32            trust
+host    all             all             ::1/128                 trust
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
+
+update: 
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+local   all             all                                     scram-sha-256
+host    all             all             127.0.0.1/32            scram-sha-256
+host    all             all             ::1/128                 scram-sha-256
+local   replication     all                                     scram-sha-256
+host    replication     all             127.0.0.1/32            scram-sha-256
+host    replication     all             ::1/128                 scram-sha-256
+
+then:
+-> brew services restart postgresql@16
+-> psql -h localhost -p 5432 -U maruf -d postgres
+
+one liner: 
+-> PGPASSWORD=maruf15-1927@ psql -h localhost -p 5432 -U maruf -d postgres
+
+
+-> \l :show all database
+-> \du :show list of user postgres
+-> \q :exit pg shell
